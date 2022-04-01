@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1648514073995-1" author="Anderson (generated)">
+        <createTable tableName="anexo">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_anexo"/>
+            </column>
+            <column name="imagem" type="longblob"/>
+            <column name="produto_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1648514073995-2" author="Anderson (generated)">
+        <createTable tableName="caracteristica">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_caracteristica"/>
+            </column>
+            <column name="descricao" type="VARCHAR(250)"/>
+            <column name="produto_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1648514073995-3" author="Anderson (generated)">
+        <createTable tableName="produto">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_produto"/>
+            </column>
+            <column name="descricao" type="VARCHAR(2000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1648514073995-4" author="Anderson (generated)">
+        <addForeignKeyConstraint baseColumnNames="produto_id" baseTableName="anexo" constraintName="FK_ANEXO_ON_PRODUTO"
+                                 referencedColumnNames="id" referencedTableName="produto"/>
+    </changeSet>
+    <changeSet id="1648514073995-5" author="Anderson (generated)">
+        <addForeignKeyConstraint baseColumnNames="produto_id" baseTableName="caracteristica"
+                                 constraintName="FK_CARACTERISTICA_ON_PRODUTO" referencedColumnNames="id"
+                                 referencedTableName="produto"/>
+    </changeSet>
+
+</databaseChangeLog>

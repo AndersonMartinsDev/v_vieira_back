@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="92d60aec-6782-4cce-b0b5-f708b3666837" name="v_vieira_back" url="jdbc:postgresql://localhost/v_vieira" driverClass="org.postgresql.Driver" />
+    </data-sources>
+    <data-source-infos>
+      <data-source-info id="92d60aec-6782-4cce-b0b5-f708b3666837" persistence-unit-name="Default" />
+    </data-source-infos>
+  </component>
+</project>
