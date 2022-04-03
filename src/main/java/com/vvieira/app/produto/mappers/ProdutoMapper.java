@@ -7,6 +7,6 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface ProdutoMapper {
-    ProdutoObterDto toProdutoObeterDto(Produto produto);
+    ProdutoObterDto toProdutoObterDto(Produto produto);
     Produto toProduto(CasoInserirProduto caso);
 }

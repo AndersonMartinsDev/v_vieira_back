@@ -142,17 +142,28 @@
 					<target>${java.version}</target> <!-- depending on your project -->
 					<annotationProcessorPaths>
 						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>${org.mapstruct.version}</version>
-						</path>
-						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
 						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
 						<!-- other annotation processors -->
 					</annotationProcessorPaths>
+					<compilerArgs>
+						<arg>
+							-Amapstruct.suppressGeneratorTimestamp=true
+						</arg>
+						<arg>
+							-Amapstruct.suppressGeneratorVersionInfoComment=true
+						</arg>
+						<arg>
+							-Amapstruct.verbose=true
+						</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>

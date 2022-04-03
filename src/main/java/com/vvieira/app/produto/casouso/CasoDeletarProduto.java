@@ -8,7 +8,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Setter
-public class CasoObterProduto implements UseCase<ProdutoObterDto> {
+public class CasoDeletarProduto implements UseCase<Void> {
 
     @Autowired
     private ProdutoRepository repository;
@@ -16,7 +16,8 @@ public class CasoObterProduto implements UseCase<ProdutoObterDto> {
     private Long id;
 
     @Override
-    public ProdutoObterDto run() {
-        return convert(ProdutoMapper.class).toProdutoObterDto(repository.getById(id));
+    public Void run() {
+        repository.deleteById(id);
+        return null;
     }
 }

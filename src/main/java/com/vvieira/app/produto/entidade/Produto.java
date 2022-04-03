@@ -1,7 +1,8 @@
 package com.vvieira.app.produto.entidade;
 
 import com.querydsl.core.annotations.Config;
-import com.vvieira.app.anexo.Anexo;
+import com.vvieira.app.anexo.entidade.Anexo;
+import com.vvieira.app.caracteristica.entidade.Caracteristica;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ import java.util.Set;
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name="descricao",length = 2000)

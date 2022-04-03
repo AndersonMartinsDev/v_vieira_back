@@ -1,20 +1,21 @@
-package com.vvieira.app.produto.entidade;
+package com.vvieira.app.anexo.entidade;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.File;
 
 @Entity
 @Getter
 @Setter
-@Table(name="caracteristica")
-public class Caracteristica {
+@Table(name="anexo")
+public class Anexo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="descricao",length = 250)
-    private String descricao;
+    @Column(name="imagem")
+    private File arquivo;
 }
