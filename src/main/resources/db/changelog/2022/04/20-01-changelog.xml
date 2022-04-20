@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1650498587379-1" author="Anderson (generated)">
+        <createTable tableName="produto_caracteristicas">
+            <column name="produto_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="caracteristicas_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1650498587379-2" author="Anderson (generated)">
+        <addColumn tableName="produto">
+            <column name="data_entrada" type="DATE"/>
+            <column name="data_saida" type="DATE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1650498587379-4" author="Anderson (generated)">
+        <addForeignKeyConstraint baseColumnNames="caracteristicas_id" baseTableName="produto_caracteristicas"
+                                 constraintName="fk_procar_on_caracteristica" referencedColumnNames="id"
+                                 referencedTableName="caracteristica"/>
+    </changeSet>
+    <changeSet id="1650498587379-5" author="Anderson (generated)">
+        <addForeignKeyConstraint baseColumnNames="produto_id" baseTableName="produto_caracteristicas"
+                                 constraintName="fk_procar_on_produto" referencedColumnNames="id"
+                                 referencedTableName="produto"/>
+    </changeSet>
+    <changeSet id="1650498587379-6" author="Anderson (generated)">
+        <dropForeignKeyConstraint baseTableName="caracteristica" constraintName="fk_caracteristica_on_fk_produto"/>
+    </changeSet>
+    <changeSet id="1650498587379-7" author="Anderson (generated)">
+        <dropColumn columnName="fk_produto" tableName="caracteristica"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,6 +1,6 @@
 package com.vvieira.app.produto.casouso;
 
-import com.vvieira.app.caracteristica.entidade.Caracteristica;
+import com.vvieira.app.produto.entidade.Caracteristica;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
 import com.vvieira.util.structural.UseCase;
 import lombok.Getter;

@@ -18,14 +18,14 @@ public class CasoListarProduto implements UseCase<Iterable<Produto>> {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    private String descricao;
+    private String nome;
     private List<Long> caracteristicas;
 
     @Override
     public Iterable<Produto> run() {
         BooleanBuilder filtro = new BooleanBuilder();
-        filtro.and(expressionEq(produto.descricao,descricao));
+        filtro.and(expressionEq(produto.descricao,nome));
         filtro.and(expressionIn(produto.caracteristicas.any().id,caracteristicas));
-        return produtoRepository.findAll(filtro);
+        return produtoRepository.findAll(filtro);//TODO:PRECISA COMEÇAR A SE PREOCUPAR COM A PAGINAÇÃO AMIGO
     }
 }

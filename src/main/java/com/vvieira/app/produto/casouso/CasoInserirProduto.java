@@ -1,7 +1,7 @@
 package com.vvieira.app.produto.casouso;
 
 import com.vvieira.app.anexo.entidade.Anexo;
-import com.vvieira.app.caracteristica.entidade.Caracteristica;
+import com.vvieira.app.produto.entidade.Caracteristica;
 import com.vvieira.app.produto.mappers.ProdutoMapper;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
 import com.vvieira.util.structural.UseCase;
