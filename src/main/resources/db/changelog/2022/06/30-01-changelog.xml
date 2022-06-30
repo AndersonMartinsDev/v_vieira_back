@@ -5,12 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1656614223910-1" author="Anderson (generated)">
-        <dropNotNullConstraint columnDataType="varchar(2000)" columnName="descricao" tableName="produto"/>
-    </changeSet>
     <changeSet id="1656614223910-2" author="Anderson (generated)">
         <addNotNullConstraint columnDataType="VARCHAR(200)" columnName="nome" tableName="produto" validate="true"
                               defaultNullValue=""/>
+        <dropNotNullConstraint columnDataType="varchar(2000)" columnName="descricao" tableName="produto"/>
     </changeSet>
-
 </databaseChangeLog>
