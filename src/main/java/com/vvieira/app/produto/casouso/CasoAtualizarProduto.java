@@ -1,6 +1,10 @@
 package com.vvieira.app.produto.casouso;
 
 import com.vvieira.app.produto.entidade.Caracteristica;
+import com.vvieira.app.produto.entidade.Produto;
+import com.vvieira.app.produto.entidade.enums.CaracteristicaEnum;
+import com.vvieira.app.produto.entidade.enums.StatusEnum;
+import com.vvieira.app.produto.mappers.ProdutoMapper;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
 import com.vvieira.util.structural.UseCase;
 import lombok.Getter;
@@ -11,16 +15,20 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class CasoAtualizarProduto implements UseCase<Void> {
+public class CasoAtualizarProduto implements UseCase<Produto> {
 
     @Autowired
     private ProdutoRepository repository;
 
+    private Long id;
+    private String nome;
     private String descricao;
-    private Set<Caracteristica> caracteristicas;
+    private Set<CaracteristicaEnum> caracteristicas;
 
     @Override
-    public Void run() {
-        return null;
+    public Produto run() {
+        Produto produto = repository.getById(id);
+        convert(ProdutoMapper.class).toAtualizarProduto(this,produto);
+        return repository.save(produto);
     }
 }

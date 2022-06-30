@@ -1,15 +1,13 @@
 package com.vvieira.app.produto.controller;
 
-import com.vvieira.app.produto.casouso.CasoDeletarProduto;
-import com.vvieira.app.produto.casouso.CasoInserirProduto;
-import com.vvieira.app.produto.casouso.CasoListarProduto;
-import com.vvieira.app.produto.casouso.CasoObterProduto;
+import com.vvieira.app.produto.casouso.*;
 import com.vvieira.app.produto.dto.ProdutoObterDto;
 import com.vvieira.app.produto.entidade.Produto;
 import com.vvieira.util.structural.Facade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/produto")
 public class ProdutoController {
@@ -23,8 +21,13 @@ public class ProdutoController {
     }
 
     @PostMapping
-    private void inserir(@RequestBody CasoInserirProduto caso) {
-        facade.run(caso);
+    private Produto inserir(@RequestBody CasoInserirProduto caso) {
+        return facade.run(caso);
+    }
+
+    @PostMapping("{id}")
+    private Produto atualizar(@RequestBody CasoAtualizarProduto caso) {
+       return facade.run(caso);
     }
 
     @GetMapping("{id}")

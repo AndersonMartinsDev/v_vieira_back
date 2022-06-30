@@ -2,12 +2,13 @@ package com.vvieira.app.produto.casouso;
 
 import com.querydsl.core.BooleanBuilder;
 import com.vvieira.app.produto.entidade.Produto;
+import com.vvieira.app.produto.entidade.enums.CaracteristicaEnum;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
 import com.vvieira.util.structural.UseCase;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
+import java.util.Set;
 
 import static com.vvieira.app.produto.entidade.QProduto.produto;
 import static com.vvieira.util.QueryDslExpressionsUtil.*;
@@ -19,13 +20,13 @@ public class CasoListarProduto implements UseCase<Iterable<Produto>> {
     private ProdutoRepository produtoRepository;
 
     private String nome;
-    private List<Long> caracteristicas;
+    private Set<CaracteristicaEnum> caracteristicas;
 
     @Override
     public Iterable<Produto> run() {
         BooleanBuilder filtro = new BooleanBuilder();
-        filtro.and(expressionEq(produto.descricao,nome));
-        filtro.and(expressionIn(produto.caracteristicas.any().id,caracteristicas));
+        filtro.and(expressionLike(produto.descricao,nome));
+        filtro.and(expressionIn(produto.caracteristicas,caracteristicas));
         return produtoRepository.findAll(filtro);//TODO:PRECISA COMEÇAR A SE PREOCUPAR COM A PAGINAÇÃO AMIGO
     }
 }

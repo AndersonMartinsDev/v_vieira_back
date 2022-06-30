@@ -19,5 +19,4 @@ public class Caracteristica {
     @Enumerated(EnumType.STRING)
     @Column(name="descricao")
     private CaracteristicaEnum descricao;
-
 }

@@ -24,7 +24,11 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="descricao",length = 2000,nullable = false)
+    @ColumnDefault("Sem nome")
+    @Column(name="nome",length = 200,nullable = false)
+    private String nome;
+
+    @Column(name="descricao",length = 2000,nullable = true)
     private String descricao;
 
     @Column(name="data_entrada")
@@ -33,9 +37,12 @@ public class Produto {
     @Column(name="data_saida")
     private LocalDate dataSaida;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="fk_produto")
-    private List<Caracteristica> caracteristicas;
+    @ElementCollection(targetClass = CaracteristicaEnum.class)
+    @JoinTable(name = "tb_caracteristicas", joinColumns =
+    @JoinColumn(name = "caracteristica_id"))
+    @Column(name = "caracteristicas", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private Set<CaracteristicaEnum> caracteristicas;
 
     @Enumerated(EnumType.STRING)
     @ColumnDefault(value = "ADQUIRIDO")
