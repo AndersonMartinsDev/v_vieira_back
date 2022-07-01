@@ -8,6 +8,6 @@
     <include file="db/changelog/2022/03/28-01-changelog.xml"/>
     <include file="db/changelog/2022/04/18-01-changelog.xml"/>
     <include file="db/changelog/2022/04/20-01-changelog.xml"/>
-    <include file="db/changelog/2022/06/30-01-changelog.xml"/>
+<!--    <include file="db/changelog/2022/06/30-01-changelog.xml"/>-->
     <include file="db/changelog/2022/06/30-02-changelog.xml"/>
 </databaseChangeLog>
