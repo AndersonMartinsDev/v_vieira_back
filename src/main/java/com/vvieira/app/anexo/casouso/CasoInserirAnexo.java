@@ -4,6 +4,7 @@ import com.vvieira.app.anexo.entidade.Anexo;
 import com.vvieira.app.anexo.repositorio.AnexoRepository;
 import com.vvieira.util.structural.UseCase;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,8 +19,9 @@ public class CasoInserirAnexo implements UseCase<Long> {
 
     private MultipartFile file;
 
+    @SneakyThrows
     @Override
-    public Long run() throws IOException {
+    public Long run() {
         Anexo anexo = new Anexo();
         anexo.setArquivo(file.getBytes());
         return repository.save(anexo).getId();
