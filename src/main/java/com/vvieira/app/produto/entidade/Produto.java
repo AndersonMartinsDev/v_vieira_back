@@ -49,7 +49,7 @@ public class Produto {
     @Column(name="status")
     private StatusEnum statusEnum;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "produto_id")
     private List<Anexo> imagens;
 }

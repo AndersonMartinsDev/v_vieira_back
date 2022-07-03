@@ -1,5 +1,6 @@
 package com.vvieira.app.produto.casouso;
 
+import com.vvieira.app.anexo.entidade.Anexo;
 import com.vvieira.app.produto.entidade.Caracteristica;
 import com.vvieira.app.produto.entidade.Produto;
 import com.vvieira.app.produto.entidade.enums.CaracteristicaEnum;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,6 +26,7 @@ public class CasoAtualizarProduto implements UseCase<Produto> {
     private String nome;
     private String descricao;
     private Set<CaracteristicaEnum> caracteristicas;
+    private List<Anexo> imagens;
 
     @Override
     public Produto run() {
