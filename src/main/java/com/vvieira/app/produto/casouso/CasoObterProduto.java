@@ -17,6 +17,6 @@ public class CasoObterProduto implements UseCase<ProdutoObterDto> {
 
     @Override
     public ProdutoObterDto run() {
-        return convert(ProdutoMapper.class).toProdutoObterDto(repository.getById(id));
+       return convert(ProdutoMapper.class).toProdutoObterDto(repository.getById(id));
     }
 }

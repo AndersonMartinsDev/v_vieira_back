@@ -4,7 +4,6 @@ import com.vvieira.app.anexo.entidade.Anexo;
 import com.vvieira.app.produto.entidade.Caracteristica;
 import com.vvieira.app.produto.entidade.Produto;
 import com.vvieira.app.produto.entidade.enums.CaracteristicaEnum;
-import com.vvieira.app.produto.entidade.enums.StatusEnum;
 import com.vvieira.app.produto.mappers.ProdutoMapper;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
 import com.vvieira.util.structural.UseCase;

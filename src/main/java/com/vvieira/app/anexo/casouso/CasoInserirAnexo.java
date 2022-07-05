@@ -8,8 +8,6 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-
 
 @Setter
 public class CasoInserirAnexo implements UseCase<Long> {
@@ -23,6 +21,8 @@ public class CasoInserirAnexo implements UseCase<Long> {
     @Override
     public Long run() {
         Anexo anexo = new Anexo();
+        anexo.setFilename(file.getOriginalFilename());
+        anexo.setTipo(file.getContentType());
         anexo.setArquivo(file.getBytes());
         return repository.save(anexo).getId();
     }
