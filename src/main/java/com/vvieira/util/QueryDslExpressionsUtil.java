@@ -1,14 +1,21 @@
 package com.vvieira.util;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.NumberPath;
-import com.querydsl.core.types.dsl.SetPath;
-import com.querydsl.core.types.dsl.StringPath;
+import com.querydsl.core.types.dsl.*;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 
 public class QueryDslExpressionsUtil {
+
+
+    public static BooleanExpression expressionDataEquals(DatePath ex, LocalDate valor){
+        if(Objects.isNull(valor) || valor.equals("null")){
+            return null;
+        }
+        return ex.eq(valor);
+    }
+
 
     public static BooleanExpression expressionEq(StringPath ex, String valor){
         if(Objects.isNull(valor) || valor.equals("null")){

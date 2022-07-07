@@ -14,7 +14,7 @@ import java.util.List;
 
 @Mapper
 public interface ProdutoMapper {
-    List<ProdutoListarDto> toListProdutoListarDto(Iterable<Produto> lista);
+    List<ProdutoListarDto> toListProdutoListarDto(List<Produto> lista);
     ProdutoObterDto toProdutoObterDto(Produto produto);
     Produto toProduto(CasoInserirProduto caso);
     @Mapping(source = "id", target = "id")

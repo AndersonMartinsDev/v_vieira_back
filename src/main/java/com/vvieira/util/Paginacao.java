@@ -1,5 +1,6 @@
 package com.vvieira.util;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
@@ -10,15 +11,16 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Component
-public class Paginacao<T> implements Pageable, Serializable {
+public class Paginacao implements Pageable, Serializable {
 
     private Integer pagina = 0;
-    private Integer totalItens = 0;
+    private Integer totalItens = 10;
+    private Sort sort;
 
     public Paginacao() {
     }
 
-    public Paginacao(Integer pagina, Integer totalItens) {
+    public Paginacao(Integer pagina, Integer totalItens,Sort sort) {
         if (totalItens < 1) {
             throw new IllegalArgumentException("Limit must not be less than one!");
         }
@@ -26,7 +28,11 @@ public class Paginacao<T> implements Pageable, Serializable {
             throw new IllegalArgumentException("Offset index must not be less than zero!");
         }
         this.pagina = Objects.nonNull(pagina) ? pagina : 0;
-        this.totalItens = Objects.nonNull(totalItens) ? totalItens : 0;
+        this.totalItens = Objects.nonNull(totalItens) ? totalItens : 10;
+        this.sort = sort;
+    }
+
+    public Paginacao(Integer pageSize, Integer i) {
     }
 
     @Override

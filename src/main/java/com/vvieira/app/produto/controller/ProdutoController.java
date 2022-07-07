@@ -1,8 +1,10 @@
 package com.vvieira.app.produto.controller;
 
 import com.vvieira.app.produto.casouso.*;
+import com.vvieira.app.produto.dto.ProdutoListarDto;
 import com.vvieira.app.produto.dto.ProdutoObterDto;
 import com.vvieira.app.produto.entidade.Produto;
+import com.vvieira.util.ListaPaginada;
 import com.vvieira.util.structural.Facade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,7 @@ public class ProdutoController {
     private Facade facade;
 
     @GetMapping
-    private Iterable<Produto> listar(CasoListarProduto caso) {
+    private ListaPaginada<ProdutoListarDto> listar(CasoListarProduto caso) {
         return facade.run(caso);
     }
 
