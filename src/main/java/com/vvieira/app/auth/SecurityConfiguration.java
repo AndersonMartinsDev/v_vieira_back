@@ -5,6 +5,7 @@ import com.vvieira.app.auth.service.TokenService;
 import com.vvieira.app.auth.token.TokenAuthenticationFilter;
 import com.vvieira.app.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,9 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Value("${spring.headers.origin}")
+    private String AllowOrigins;
 
     @Autowired
     private UserRepository repository;
@@ -49,10 +53,10 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST","OPTIONS"));
-        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowedHeaders(Arrays.asList("access-control-allow-headers","access-control-allow-methods","access-control-allow-origin","Authorization", "Cache-Control", "Content-Type","Origin","X-Requested-With","Accept"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList(AllowOrigins));
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
+//        corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
 
 
