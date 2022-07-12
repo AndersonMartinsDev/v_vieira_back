@@ -4,6 +4,7 @@ import com.vvieira.app.produto.casouso.*;
 import com.vvieira.app.produto.dto.ProdutoListarDto;
 import com.vvieira.app.produto.dto.ProdutoObterDto;
 import com.vvieira.app.produto.entidade.Produto;
+import com.vvieira.app.produto.entidade.enums.StatusEnum;
 import com.vvieira.util.ListaPaginada;
 import com.vvieira.util.structural.Facade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ProdutoController {
         return facade.run(caso);
     }
 
-    @PostMapping("{id}")
+    @PutMapping("{id}")
     private Produto atualizar(@RequestBody CasoAtualizarProduto caso) {
        return facade.run(caso);
     }
@@ -43,5 +44,13 @@ public class ProdutoController {
         CasoDeletarProduto caso = new CasoDeletarProduto();
         caso.setId(id);
         facade.run(caso);
+    }
+
+    @PutMapping("status/{id}/{status}")
+    private ProdutoObterDto atualizarStatus(@PathVariable("id") Long id, @PathVariable("status")StatusEnum statusEnum){
+        CasoAtualizarStatusProduto caso = new CasoAtualizarStatusProduto();
+        caso.setId(id);
+        caso.setStatusEnum(statusEnum);
+        return facade.run(caso);
     }
 }

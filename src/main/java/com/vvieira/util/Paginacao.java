@@ -21,10 +21,10 @@ public class Paginacao implements Pageable, Serializable {
     }
 
     public Paginacao(Integer pagina, Integer totalItens,Sort sort) {
-        if (totalItens < 1) {
+        if (Objects.nonNull(totalItens) && totalItens < 1) {
             throw new IllegalArgumentException("Limit must not be less than one!");
         }
-        if (pagina < 0) {
+        if (Objects.nonNull(pagina) && pagina < 0) {
             throw new IllegalArgumentException("Offset index must not be less than zero!");
         }
         this.pagina = Objects.nonNull(pagina) ? pagina : 0;

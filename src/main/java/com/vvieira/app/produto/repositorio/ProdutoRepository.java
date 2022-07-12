@@ -5,4 +5,4 @@ import com.vvieira.util.structural.GenericRespository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProdutoRepository extends GenericRespository<Produto,Long> {}
+public interface ProdutoRepository extends GenericRespository<Produto,Long> { }

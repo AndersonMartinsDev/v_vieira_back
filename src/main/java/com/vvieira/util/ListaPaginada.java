@@ -3,7 +3,6 @@ package com.vvieira.util;
 import lombok.Getter;
 
 import java.util.Collection;
-import java.util.List;
 
 @Getter
 public class ListaPaginada<T> {

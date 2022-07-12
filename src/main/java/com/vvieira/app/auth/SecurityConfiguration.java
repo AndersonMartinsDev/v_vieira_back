@@ -26,7 +26,7 @@ import java.util.Arrays;
 class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.headers.origin}")
-    private String AllowOrigins;
+    private String allowOrigins;
 
     @Autowired
     private UserRepository repository;
@@ -54,7 +54,7 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedHeaders(Arrays.asList("access-control-allow-headers","access-control-allow-methods","access-control-allow-origin","Authorization", "Cache-Control", "Content-Type","Origin","X-Requested-With","Accept"));
-        corsConfiguration.setAllowedOrigins(Arrays.asList(AllowOrigins));
+        corsConfiguration.setAllowedOrigins(Arrays.asList(allowOrigins));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
 //        corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
