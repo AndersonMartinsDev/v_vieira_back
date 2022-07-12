@@ -27,7 +27,7 @@ public class ProdutoController {
         return facade.run(caso);
     }
 
-    @PutMapping("{id}")
+    @PostMapping("{id}")
     private Produto atualizar(@RequestBody CasoAtualizarProduto caso) {
        return facade.run(caso);
     }
@@ -46,11 +46,8 @@ public class ProdutoController {
         facade.run(caso);
     }
 
-    @PutMapping("status/{id}/{status}")
-    private ProdutoObterDto atualizarStatus(@PathVariable("id") Long id, @PathVariable("status")StatusEnum statusEnum){
-        CasoAtualizarStatusProduto caso = new CasoAtualizarStatusProduto();
-        caso.setId(id);
-        caso.setStatusEnum(statusEnum);
+    @PutMapping("status")
+    private ProdutoObterDto atualizarStatus(@RequestBody CasoAtualizarStatusProduto caso){
         return facade.run(caso);
     }
 }
