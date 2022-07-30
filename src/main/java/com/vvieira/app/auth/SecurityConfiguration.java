@@ -53,7 +53,7 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedHeaders(Arrays.asList("access-control-allow-headers","access-control-allow-methods","access-control-allow-origin","Authorization", "Cache-Control", "Content-Type","Origin","X-Requested-With","Accept"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
         corsConfiguration.setAllowedOrigins(Arrays.asList(allowOrigins,"https://v-vieira.herokuapp.com"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"));
 //        corsConfiguration.setAllowCredentials(true);
