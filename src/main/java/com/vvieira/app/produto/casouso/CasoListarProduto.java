@@ -2,6 +2,7 @@ package com.vvieira.app.produto.casouso;
 
 import com.querydsl.core.BooleanBuilder;
 import com.vvieira.app.produto.dto.ProdutoListarDto;
+import com.vvieira.app.produto.dto.ProdutoObterDto;
 import com.vvieira.app.produto.entidade.Produto;
 import com.vvieira.app.produto.mappers.ProdutoMapper;
 import com.vvieira.app.produto.repositorio.ProdutoRepository;
@@ -22,16 +23,14 @@ public class CasoListarProduto implements UseCase<ListaPaginada<ProdutoListarDto
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    private String nome;
     private Integer pageIndex;
     private Integer pageSize;
 
     @Override
     public ListaPaginada<ProdutoListarDto> run() {
         BooleanBuilder filtro = new BooleanBuilder();
-        filtro.and(expressionLike(produto.nome, nome));
-        Page<Produto> page = produtoRepository.findAll(filtro, paginacao(pageIndex, Sort.by("id").descending(), pageSize));
+//        filtro.and(expressionLike(produto.nome, filter.getNome()));
+        Page<Produto> page = produtoRepository.findAll(filtro, paginacao(pageIndex,pageSize));
         return new ListaPaginada<>(convert(ProdutoMapper.class).toListProdutoListarDto(page.getContent()), page.getTotalElements(), page.getNumber());
-
     }
 }

@@ -1,7 +1,7 @@
 package com.vvieira.util.structural;
 
-import com.vvieira.util.Paginacao;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 public interface UseCase<T> {
@@ -12,7 +12,7 @@ public interface UseCase<T> {
           return Mappers.getMapper(clazz);
      }
 
-     default Paginacao paginacao(Integer pagina, Sort sort, Integer quantidadePagina){
-          return new Paginacao(pagina,quantidadePagina,sort);
+     default PageRequest paginacao(Integer pagina,Integer quantidadePagina){
+          return PageRequest.of(pagina,quantidadePagina, Sort.by(Sort.Direction.DESC,"id"));
      }
 }

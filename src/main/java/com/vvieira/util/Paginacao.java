@@ -47,8 +47,8 @@ public class Paginacao implements Pageable, Serializable {
 
     @Override
     public int getPageNumber() {
-        return pagina / totalItens;
-    }
+        return pagina;
+    }//TODO: Talvez essa divisão funcione melhor com numeros do tipo double, depurar e fazer testes
 
     @Override
     public int getPageSize() {
